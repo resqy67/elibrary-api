@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_libraries",
+  "info": {
+    "singularName": "book-library",
+    "pluralName": "book-libraries",
+    "displayName": "book-library",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_book": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "string"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "file_book": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos",
+        "audios",
+        "files"
+      ]
+    },
+    "is_accepted": {
+      "type": "boolean",
+      "default": true
+    },
+    "uuid": {
+      "type": "customField",
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "borrow_book": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::borrow-book.borrow-book",
+      "inversedBy": "book_libraries"
+    }
+  }
+}

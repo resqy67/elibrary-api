@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "borrow_books",
+  "info": {
+    "singularName": "borrow-book",
+    "pluralName": "borrow-books",
+    "displayName": "Borrow_book",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "borrow_date": {
+      "type": "date"
+    },
+    "book_libraries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book-library.book-library",
+      "mappedBy": "borrow_book"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "borrow_books"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  }
+}
